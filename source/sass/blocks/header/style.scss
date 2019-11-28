@@ -1,0 +1,49 @@
+/**
+*	Шапка сайта
+*
+*/
+
+.header {
+  width: 15.7%;
+  padding: 0 2%;
+
+  background-color: white;
+  border-right: 1px solid #efefef;
+}
+
+.header__nav {
+  position: fixed;
+  top: 50%;
+
+  width: 15.7%;
+
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .header {
+    width: 100%;
+    padding: 0;
+  }
+
+  .header__nav {
+    position: relative;
+    top: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    padding: 20px;
+
+    border-right: none;
+    border-bottom: 1px solid #efefef;
+
+    transform: none;
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .header__nav {
+    max-width: 298px;
+  }
+}

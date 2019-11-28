@@ -1,0 +1,208 @@
+/**
+*	Обо мне
+*
+*/
+
+.about {
+  padding: 100px 0 50px;
+}
+
+.about__wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about__content {
+  width: 75%;
+  padding-right: 5%;
+}
+
+.about__content-text {
+  margin-bottom: 60px;
+}
+
+.about__content p {
+  line-height: 1.6;
+}
+
+.about__content code {
+  font: inherit;
+}
+
+.about__content a {
+  text-decoration: underline;
+  color: $color-red;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: underline;
+    color: rgba($color-red, 0.7);
+  }
+}
+
+.about__stats {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: -8%;
+  margin-top: -40px;
+}
+
+.about__stat {
+  box-sizing: border-box;
+  width: 25%;
+  min-width: 233px;
+  margin-left: 8%;
+  margin-top: 40px;
+}
+
+.about__stat-title {
+  margin: 0;
+  margin-bottom: 10px;
+
+  font-size: 22px;
+  color: #999;
+}
+
+.about__stat-list {
+  @include reset-ul;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about__stat-list li {
+  width: 20px;
+  height: 20px;
+
+  margin-right: 5px;
+
+  background-color: $color-red;
+  border-radius: 50%;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@for $i from 1 through 10 {
+  .about__stat-list--#{$i} li:nth-child(n+#{$i+1}) {
+    background-color: #ccc;
+  }
+}
+
+.about__bar {
+  width: 20%;
+}
+
+.about__bar-link {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+
+  text-align: center;
+  color: $color-red;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -20px;
+
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+
+    background-color: rgba($color-red, 0.05);
+    border-radius: 50%;
+
+    transition: $ease;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+
+    background-color: rgba($color-red, 0.1);
+  }
+
+  &:active::before {
+    background-color: rgba($color-red, 0.2);
+  }
+}
+
+.about__bar-icon {
+  margin-bottom: 10px;
+  fill: $color-red;
+}
+
+.about__bar-title {
+  margin-bottom: 5px;
+
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.about__bar-desc {
+  margin: 0;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgba($color-red, 0.6);
+}
+
+@media screen and (max-width: 620px) {
+  .about__wrap {}
+
+  .about__content {
+    order: 0;
+    width: 100%;
+    margin-bottom: 60px;
+    padding: 0;
+  }
+
+  .about__content-text {
+    margin-bottom: 0;
+  }
+
+  .about__bar {
+    order: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 70px;
+  }
+
+  .about__bar-link {
+    margin-bottom: 0;
+    margin-right: 80px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .about__stats {
+    width: 100%;
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .about__stat {
+    margin: 0;
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,28 @@
+/**
+*	Сборщик стилей
+*
+*/
+
+/* Настройки */
+@import "settings/variables";
+@import "settings/mixins";
+@import "settings/fonts";
+@import "settings/container";
+
+/* Основные стили */
+@import "../libs/normalize-css/normalize";
+@import "settings/base";
+
+/* Анимации */
+@import "blocks/spiner/style";
+@import "../libs/animate.css/animate";
+
+/* Секции */
+@import "blocks/spiner/style";
+@import "blocks/form/style";
+@import "blocks/header/style";
+@import "blocks/content/style";
+@import "blocks/nav/style";
+@import "blocks/about/style";
+@import "blocks/work/style";
+@import "blocks/contact/style";

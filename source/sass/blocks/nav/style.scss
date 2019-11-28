@@ -1,0 +1,169 @@
+/**
+*	Главная навигация
+*
+*/
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40%;
+
+  text-align: center;
+  color: black;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.nav__link-title {
+  margin-bottom: 5%;
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+
+  transition: $ease;
+}
+
+.nav__link:active .nav__link-title {
+  opacity: 0.6;
+}
+
+.nav__link-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  margin: 0;
+  margin-bottom: 5%;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 25px;
+    height: 2px;
+
+    background-color: $color-red;
+
+    transition: $ease;
+  }
+}
+
+.nav__link:hover .nav__link-wrap::before,
+.nav__link:hover .nav__link-wrap::after,
+.nav__link:focus .nav__link-wrap::before,
+.nav__link:focus .nav__link-wrap::after {
+  background-color: rgba($color-red, 0.3);
+}
+
+.nav__link-icon {
+  transition: $ease;
+}
+
+.nav__link:hover .nav__link-icon,
+.nav__link:focus .nav__link-icon {
+  fill: $color-red;
+}
+
+.nav__link:active .nav__link-icon {
+  opacity: 0.6;
+}
+
+.nav__link-desc {
+  margin: 0;
+
+  font-size: 12px;
+  color: #222;
+
+  transition: $ease;
+}
+
+.nav__link:hover .nav__link-desc,
+.nav__link:focus .nav__link-desc {
+  color: $color-red;
+}
+
+.nav__link:active .nav__link-desc {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .nav {
+    justify-content: space-around;
+  }
+
+  .nav__link {
+    position: relative;
+
+    margin-bottom: 0;
+    margin-right: 35px;
+    padding: 20px 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .nav__link-title {
+    position: relative;
+
+    margin-bottom: 0;
+    padding-left: 45px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+
+      height: 2px;
+
+      background-color: $color-red;
+      opacity: 0;
+      transition: $ease;
+    }
+  }
+
+  .nav__link:hover .nav__link-title::after {
+    opacity: 1;
+  }
+
+  .nav__link-wrap {
+    position: absolute;
+    top: 15px;
+    left: 0;
+
+    margin-bottom: 0;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .nav__link-desc {
+    @include sr-only;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .nav__link {
+    margin-right: 0;
+  }
+
+  .nav__link-title {
+    padding: 0;
+  }
+
+  .nav__link-wrap {
+    left: 10%;
+  }
+}

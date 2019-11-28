@@ -1,0 +1,71 @@
+/**
+*	Форма обратной связи
+*
+*/
+
+.form form {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form input,
+.form textarea {
+  @include placeholder {
+    color: #c9c9c9;
+  }
+
+  width: 100%;
+  padding: 15px 35px;
+
+  font: inherit;
+  font-weight: normal;
+
+  border: 1px solid #c9c9c9;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    border-color: #b1b1b1;
+  }
+}
+
+.form label.error {
+  border: 1px solid red;
+
+  animation-name: 'shake';
+  animation-duration: 1s;
+}
+
+.form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.form button[type="submit"] {
+  display: inline-block;
+  padding: 20px 30px;
+
+  font: inherit;
+  text-align: center;
+  color: white;
+
+  background-color: $color-black;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: rgba($color-black, 0.9);
+  }
+
+  &:active {
+    background-color: $color-black;
+  }
+}
+
+.form__alert {
+  padding: 20px;
+
+  border: 1px solid red;
+}

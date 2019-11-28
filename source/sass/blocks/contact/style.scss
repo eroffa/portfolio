@@ -1,0 +1,121 @@
+/**
+*	Контакты
+*
+*/
+
+.contact {
+  padding: 50px 0 100px;
+}
+
+.contact__content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact__data {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-right: 5%;
+
+  font-style: normal;
+}
+
+.contact__data * {
+  display: block;
+}
+
+.contact__data a {
+  margin-bottom: 5px;
+  color: #696969;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: $color-black;
+  }
+
+  &:active {
+    text-decoration: none;
+    color: rgba($color-black, 0.5);
+  }
+}
+
+.contact__name {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.contact__form {
+  width: 70%;
+}
+
+.contact__form-item {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.contact__form-item-error {
+  margin-bottom: 5px;
+  color: $color-red;
+}
+
+.contact__form-item label {
+  position: relative;
+  display: block;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: $color-black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+  }
+}
+
+.contact__form-item label.error::before {
+  background-color: $color-red;
+}
+
+.contact__form-item--name label::before {
+  height: 100%;
+  background-image: url("../img/contact/user.svg");
+}
+
+.contact__form-item--email label::before {
+  height: 100%;
+  background-image: url("../img/contact/email.svg");
+}
+
+.contact__form-item--text label::before {
+  background-image: url("../img/contact/edit.svg");
+}
+
+.contact__form-item input,
+.contact__form-item textarea {
+  padding: 15px 60px;
+}
+
+.contact__form button[type="submit"] {
+  display: flex;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .contact__data {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+
+  .contact__form {
+    width: 100%;
+  }
+}
