@@ -166,7 +166,10 @@
 }
 
 .work__full-info {
+  height: auto;
   margin-bottom: 60px;
+
+  transition: $ease;
 }
 
 .work__full-info h3 {
@@ -243,6 +246,11 @@
       color: rgba(black, 0.5);
     }
   }
+}
+
+.work__frame {
+  width: 100%;
+  overflow: auto;
 }
 
 @media screen and (max-width: 1200px) {

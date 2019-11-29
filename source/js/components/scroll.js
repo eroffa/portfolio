@@ -1,8 +1,13 @@
 'use strict';
 
 /**
- *	Плавный скрол
+ *	Плавный скрол по навигации сайта
  *
+ * @param this.$elem object Навигация в которой содержатся ссылки
+ * @param this.$links object Ссылки навигации
+ * @param this.SPEED number Скорость срола
+ *
+ * @return void
  */
 
 (function () {
@@ -15,6 +20,21 @@
     this.start();
   };
 
+  /**
+  *	Запуск логики скрола
+  *
+  * @param $a object Ссылка на которую в данный момент нажали
+  * @param anchor string Название якоря ссылки (#name - то что после #)
+  * @param sectionElement object Элемент секции на который укащывает ссылка
+  * @param sectionPosition number Позиция секции
+  * @param startPosition number Позиция нахождения пользователя на странице
+  * @param startTime number Начальное время прокрутки
+  * @param duration number Скорость прокрутки
+  * @param animation function Анимация прокрутки
+  * @param ease function Формула анимации
+  *
+  * @returns void
+  */
   Scroll.prototype.start = function () {
     [].map.call(this.$links, function ($link) {
       $link.addEventListener('click', function (evt) {
@@ -32,9 +52,16 @@
 
         var duration = this.SPEED;
 
-        requestAnimationFrame(animation.bind(this));
+        requestAnimationFrame(animation);
 
 
+        /**
+        *	@param currentTime number Текущее время прокрутки
+        *	@param progress number Разница во времени
+        *	@param run number Текущая позиция прокрутки
+        *
+        * @returns void
+        */
         function animation(currentTime) {
 
           if (!startTime) startTime = currentTime;

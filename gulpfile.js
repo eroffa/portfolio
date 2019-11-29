@@ -161,6 +161,7 @@ task('copy', function () {
     SOURCE + '/manifest.json',
     SOURCE + '/libs/*.js',
     SOURCE + '/works/*.html',
+    SOURCE + '/projects/**/*',
   ], {base: SOURCE})
   .pipe(dest(BUILD));
 });

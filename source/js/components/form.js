@@ -1,5 +1,19 @@
 'use strict';
 
+/**
+*	Форма отправки сообщения
+*
+* @param this.$form object Форма отправки сообщения
+* @param this.$name object Поле имя
+* @param this.$email object Поле email
+* @param this.$message object Поле сообщение
+* @param this.$submit object Кнопка отправки формы
+* @param error string Текст ошибки валидации
+* @param this.$log object Элемент отображающий ошибку
+*
+* @return void
+*/
+
 (function () {
   var Form = function (form) {
     this.$form = typeof form === 'object' ? form : document.querySelector(form);
@@ -8,36 +22,63 @@
     this.$message = this.$form.elements.message;
     this.$submit = this.$form.querySelector('button[type="submit"]');
 
+    this.error = null;
+    this.$log = null;
+
     this.start();
   };
 
-  // Старт
+  /**
+  *	Запуск логики формы
+  *
+  * @return void
+  */
   Form.prototype.start = function () {
     this.$submit.addEventListener('click', this.onEdit.bind(this));
     this.$form.addEventListener('submit', this.onSubmit.bind(this));
   };
 
-  // Валидация полей при отправке формы и редактировании полей
+  /**
+   * Валидация формы при отправке и редактировании полей
+   *
+   * @return void
+   */
   Form.prototype.onEdit = function () {
     this.onValidation();
 
     this.$form.addEventListener('input', this.onValidation.bind(this), true);
   };
 
-  // Отправка формы
+  /**
+  *	Отправка формы
+  *
+  * @return void
+  */
   Form.prototype.onSubmit = function () {
     this.$form.removeEventListener('input', this.onValidation, true);
     this.$submit.removeEventListener('click', this.onEdit);
     this.$form.removeEventListener('submit', this.onSubmit);
   };
 
-  // Валидация полей
+  /**
+  *	Валидация полей
+  *
+  * @return void
+  */
   Form.prototype.onValidation = function () {
     this.validateName();
     this.validateEmail();
   };
 
-  // Валидация поля имени
+  /**
+  *	Валидация поля имени
+  *
+  * @param length number Количество введенных знаков
+  * @param min number Минимальное значение введенных данных
+  * @param max number Максимальное значение введенных данных
+  *
+  * @return void
+  */
   Form.prototype.validateName = function () {
     var length = this.$name.value.length;
     var min = 2;
@@ -56,7 +97,14 @@
     this.alert(this.$name);
   };
 
-  // Валидация поля email
+  /**
+  *	Валидация поля email
+  *
+  * @param length number Количество введенных знаков
+  * @param pattern object Шаблон для email
+  *
+  * @return void
+  */
   Form.prototype.validateEmail = function () {
     var length = this.$email.value.length;
     var pattern  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -72,7 +120,13 @@
     this.alert(this.$email);
   };
 
-  // Уведомление об ошибке
+  /**
+  *	Уведомление об ошибке
+  *
+  * @param parent object Родительский элемент в котором находится input
+  *
+  * @return void
+  */
   Form.prototype.alert = function (input) {
     var parent = input.parentElement;
 
@@ -89,7 +143,11 @@
     }
   };
 
-  // Добавляем ошибку
+  /**
+  * Отображение ошибки валидации
+  *
+  * @return void
+  */
   Form.prototype.addError = function (elem) {
     this.removeError(elem);
 
@@ -97,10 +155,13 @@
     this.$log.classList.add('contact__form-item-error');
     this.$log.textContent = this.error;
     elem.insertAdjacentElement('beforebegin', this.$log);
-
   };
 
-  // Удаляем ошибку
+  /**
+  * Удаление ошибки валидации
+  *
+  * @return void
+  */
   Form.prototype.removeError = function (elem) {
     this.$log = elem.parentElement.querySelector('.contact__form-item-error');
     if (this.$log) elem.parentElement.removeChild(this.$log);
